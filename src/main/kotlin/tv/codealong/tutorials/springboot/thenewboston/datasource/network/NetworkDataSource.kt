@@ -16,8 +16,9 @@ class NetworkDataSource(
 ) : BankDataSource {
 
     override fun retrieveBanks(): Collection<Bank> {
+        // NOTE: create / clone your own endpoint here: https://61e037d70f3bdb0017934eb4.mockapi.io/api/
         val response: ResponseEntity<BankList> =
-            restTemplate.getForEntity("http://54.193.31.159/banks")
+            restTemplate.getForEntity("https://61e037d70f3bdb0017934eb4.mockapi.io/api/banks")
 
         return response.body?.results
             ?: throw IOException("Could not fetch banks from the network")
