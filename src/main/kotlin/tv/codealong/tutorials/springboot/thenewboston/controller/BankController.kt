@@ -19,7 +19,10 @@ class BankController(private val service: BankService) {
         ResponseEntity(e.message, HttpStatus.BAD_REQUEST)
 
     @GetMapping
-    fun getBanks(): Collection<Bank> = service.getBanks()
+    fun getBanks(): List<Bank>{
+        val rv = service.getBanks()
+        return rv
+    }
 
     @GetMapping("/{accountNumber}")
     fun getBank(@PathVariable accountNumber: String): Bank = service.getBank(accountNumber)
