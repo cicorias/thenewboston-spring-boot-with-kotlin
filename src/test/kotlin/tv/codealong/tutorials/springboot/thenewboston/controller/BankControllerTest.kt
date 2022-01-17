@@ -1,6 +1,9 @@
 package tv.codealong.tutorials.springboot.thenewboston.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -9,10 +12,14 @@ import org.junit.jupiter.api.TestInstance.Lifecycle
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.context.TestConfiguration
+import org.springframework.context.annotation.Bean
 import org.springframework.http.MediaType
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.web.servlet.*
+import tv.codealong.tutorials.springboot.thenewboston.datasource.BankDataSource
 import tv.codealong.tutorials.springboot.thenewboston.model.Bank
+import tv.codealong.tutorials.springboot.thenewboston.service.BankService
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -20,6 +27,27 @@ internal class BankControllerTest @Autowired constructor(
     val mockMvc: MockMvc,
     val objectMapper: ObjectMapper
 ) {
+
+    @MockK
+    @InjectMockKs
+//    @MockBean
+//    private lateinit var bankService : BankService
+//
+
+    //TODO: use TestConfiguration to insert different Service
+    @TestConfiguration
+    class ControllerTestConfig {
+//        @Bean
+//        fun bankDataSource() = mockk<BankDataSource>()
+        // private lateinit var bankDataSource : BankDataSource
+//        fun bankController() = BankController(bankService())
+
+//        @Bean
+//        fun dataSource() : BankDataSource = mockk(relaxed = true)
+
+//        @Bean
+//        fun bankService() : BankService = BankService(dataSource())
+    }
 
     val baseUrl = "/api/banks"
 
