@@ -17,7 +17,7 @@ class NetworkDataSource(
 
     override fun retrieveBanks(): Collection<Bank> {
         val response: ResponseEntity<BankList> =
-            restTemplate.getForEntity("http://54.193.31.159/banks")
+            restTemplate.getForEntity("http://52.52.160.149/banks")
 
         return response.body?.results
             ?: throw IOException("Could not fetch banks from the network")

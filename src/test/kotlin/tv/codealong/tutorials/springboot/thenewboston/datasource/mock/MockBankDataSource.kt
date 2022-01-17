@@ -1,10 +1,12 @@
 package tv.codealong.tutorials.springboot.thenewboston.datasource.mock
 
+import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.stereotype.Repository
 import tv.codealong.tutorials.springboot.thenewboston.datasource.BankDataSource
 import tv.codealong.tutorials.springboot.thenewboston.model.Bank
 
 @Repository("mock")
+//@TestConfiguration
 class MockBankDataSource : BankDataSource {
 
     val banks = mutableListOf(
